@@ -21,6 +21,8 @@ router.register('location', LocationCreateAPIView)
 router.register('certification', CertificationCreateAPIView)
 router.register('job-list', jobListCreateAPIView)
 router.register('job-experience', jobExperienceCreateAPIView)
+router.register('care-taker-info', careTakerInfoAPIView)
+
 
 
 router.register('pet-services', petServicesCreateAPIView)
@@ -51,6 +53,7 @@ router.register('faq', faqCreateAPIView)
 
 
 router.register('pet-me-services', petMeServicesAPIView)
+
 
 
 
