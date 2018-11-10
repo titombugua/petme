@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL=True
 
 # Application definition
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'markdown_deux',
     'pagedown',
     'rest_framework',
+    'corsheaders',
 
     # local apps
     'app',
@@ -53,6 +55,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
