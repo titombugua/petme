@@ -145,7 +145,7 @@ class lostAndFoundSerializer(ModelSerializer):
 class petWasSerializer(ModelSerializer):
     class Meta:
         model = petWas
-        fields = ('id','url', 'specifically')
+        fields = ('id', 'specifically')
 
 
 class petLostFoundInfoSerializer(ModelSerializer):
@@ -163,7 +163,7 @@ class petServicesSerializer(ModelSerializer):
 class faqSerializer(ModelSerializer):
     class Meta:
         model = faq
-        fields = ('faqId','url', 'question','answers')
+        fields = ('faqId', 'question','answers')
 
         
 class petMeServicesSerializer(ModelSerializer):

@@ -64,8 +64,8 @@ class petCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
@@ -76,8 +76,8 @@ class PetsPersonalInfoCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
@@ -90,8 +90,8 @@ class petInfoCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class ownerInfoCreateAPIView(viewsets.ModelViewSet):
     queryset = ownerInfo.objects.all()
@@ -100,8 +100,8 @@ class ownerInfoCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
@@ -119,8 +119,8 @@ class CertificationCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 class LocationCreateAPIView(viewsets.ModelViewSet):
@@ -130,8 +130,8 @@ class LocationCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
@@ -142,8 +142,8 @@ class VetInfoCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 
@@ -154,8 +154,8 @@ class jobListCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 class jobExperienceCreateAPIView(viewsets.ModelViewSet):
@@ -165,8 +165,8 @@ class jobExperienceCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class careTakerInfoAPIView(viewsets.ModelViewSet):
     queryset = careTakerInfo.objects.all()
@@ -175,8 +175,8 @@ class careTakerInfoAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class petServicesCreateAPIView(viewsets.ModelViewSet):
     queryset = petServices.objects.all()
@@ -185,8 +185,8 @@ class petServicesCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
     
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 # 
 
@@ -197,8 +197,8 @@ class rescueOrganizationsCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 class petFriendlyVenueCreateAPIView(viewsets.ModelViewSet):
@@ -208,8 +208,8 @@ class petFriendlyVenueCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class lostAndFoundCreateAPIView(viewsets.ModelViewSet):
     queryset = lostAndFound.objects.all()
@@ -218,18 +218,14 @@ class lostAndFoundCreateAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 class petWasCreateAPIView(viewsets.ModelViewSet):
     queryset = petWas.objects.all()
     serializer_class = petWasSerializer
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
-
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
 
 
 
@@ -248,9 +244,13 @@ class faqCreateAPIView(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+
+
+
+
 
 
 
