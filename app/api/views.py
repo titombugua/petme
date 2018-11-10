@@ -238,16 +238,13 @@ class petLostFoundInfoCreateAPIView(viewsets.ModelViewSet):
 
 
 
-class faqCreateAPIView(viewsets.ModelViewSet):
+class faqView(viewsets.ModelViewSet):
     queryset = faq.objects.all()
     serializer_class = faqSerializer
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
-
-
+    
 
 
 
@@ -259,23 +256,6 @@ class petMeServicesAPIView(viewsets.ModelViewSet):
     serializer_class = petMeServicesSerializer
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
-
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

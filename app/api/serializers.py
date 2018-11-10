@@ -1,3 +1,4 @@
+from rest_framework import serializers
 from rest_framework.serializers import (
     HyperlinkedIdentityField,
     HyperlinkedModelSerializer,
@@ -10,12 +11,15 @@ from accounts.api.serializers import UserDetailSerializer
 
 from app.models import *
 
+
+user=UserDetailSerializer()
+
 class AddressSerializer(HyperlinkedModelSerializer):
-    user=UserDetailSerializer()
+    # user=UserDetailSerializer()
     class Meta:
         model = Address
         fields = [
-        'id', 'user', 'doorNo', 'street', 'city','emirate','zipCode'
+        'id', 'url', 'doorNo', 'street', 'city','emirate','zipCode'
         ]
 
 
@@ -30,7 +34,7 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsInfo
         fields = [
-        'petId','url', 'petName','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
+        'petId', 'petName','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
         ]
 
 
@@ -45,7 +49,7 @@ class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsPersonalInfo
         fields = [
-        'petId','url','age','color','identification'
+        'petId','age','color','identification'
         ]
 
 
@@ -59,6 +63,8 @@ class petInfoSerializer(ModelSerializer):
 
 # 
 class ownerInfoSerializer(ModelSerializer):
+    user=UserDetailSerializer()
+
     class Meta:
         model = ownerInfo
         fields = ('oId','url', 'user', 'petInfo')
@@ -82,6 +88,7 @@ class LocationSerializer(ModelSerializer):
 
 
 class VetInfoCreateUpdateSerializer(ModelSerializer):
+
     certification = CertificationSerializer()
     location = LocationSerializer()
 
@@ -145,14 +152,24 @@ class lostAndFoundSerializer(ModelSerializer):
 class petWasSerializer(ModelSerializer):
     class Meta:
         model = petWas
-        fields = ('id', 'specifically')
+        fields = ('id','specifically')
 
 
 class petLostFoundInfoSerializer(ModelSerializer):
-    petWas =petWasSerializer()
     class Meta:
         model = petLostFoundInfo
-        fields = ('id','url', 'typeOfPet', 'breed','gender', 'color', 'age', 'petWas', 'image')
+        fields = ('id', 'typeOfPet', 'breed','gender', 'color', 'age', 'petWas', 'image')
+
+
+
+
+    # def create(self, validated_data):
+    #     tracks_data = validated_data.pop('petWas')
+    #     Plaf = petLostFoundInfo.objects.create(**validated_data)
+    #     for track_data in tracks_data:
+    #         petWas.objects.create(Plaf=Plaf, **track_data)
+    #     return Plaf
+
 
 class petServicesSerializer(ModelSerializer):
     class Meta:
@@ -160,16 +177,16 @@ class petServicesSerializer(ModelSerializer):
         fields = ('psId','petId', 'url', 'serviceName', 'seviceCost','serviceDuration')
 
 
-class faqSerializer(ModelSerializer):
+class faqSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = faq
         fields = ('faqId', 'question','answers')
 
         
-class petMeServicesSerializer(ModelSerializer):
+class petMeServicesSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = petMeServices
-        fields = ('sId','url', 'pets','services', 'created')
+        fields = ('sId','pets','services', 'created')
 
 
 

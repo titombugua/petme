@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils import timezone
@@ -22,7 +22,7 @@ from .utils import get_read_time
 
 
 class Address(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     doorNo = models.CharField(max_length=50 , null=True )
     street=models.CharField(max_length=50 , null=True)
     AUH = 'Abu Dhabi'
@@ -61,7 +61,7 @@ class PetsInfo(models.Model):
     petId = models.AutoField(primary_key=True)
     petName  = models.CharField(max_length=30)
     petBreed = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="/uploads")
+    image = models.ImageField(upload_to="/uploads", null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
 
@@ -95,7 +95,8 @@ class PetsInfo(models.Model):
     food = models.CharField(max_length=500)
     anythingElse = models.CharField(max_length=500, null=True)
 
-
+    def __str__(self):
+        return self.petName
 
 
 
@@ -113,7 +114,7 @@ class petInfo(models.Model):
 
 class ownerInfo(models.Model):
     oId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     petInfo = models.ForeignKey(petInfo, on_delete=models.CASCADE)
 
 
@@ -136,7 +137,7 @@ class Location(models.Model):
 
 class VetInfo(models.Model):
     vId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     certification = models.ForeignKey(Certification, on_delete=models.CASCADE)
 
@@ -156,7 +157,7 @@ class jobExperience(models.Model):
 
 class careTakerInfo(models.Model):
     ctId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     jobExperience = models.ForeignKey(jobExperience, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -269,10 +270,10 @@ class faq(models.Model):
 
 class petMeServices(models.Model):
     sId = models.AutoField(primary_key=True)
-    petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
+    # petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
     pets = models.CharField(max_length=30)
     services = models.CharField(max_length=30)
-    created = models.CharField(max_length=30)
+    created = models.DateField()
 
 
 
