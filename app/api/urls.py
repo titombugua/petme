@@ -49,7 +49,7 @@ router.register('pet-was', petWasCreateAPIView)
 router.register('petlost', petLostFoundInfoCreateAPIView)
 
 
-router.register('faq', faqView)
+router.register('faq', faqViewSet)
 
 
 router.register('pet-me-services', petMeServicesAPIView)

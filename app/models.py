@@ -269,7 +269,7 @@ class petLostFoundInfo(models.Model):
 class faq(models.Model):
     faqId = models.AutoField(primary_key=True)
     question = models.CharField(max_length=200)
-    answers = models.CharField(max_length=300)
+    answers = models.TextField()
 
 
 

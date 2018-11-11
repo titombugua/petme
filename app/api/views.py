@@ -238,7 +238,7 @@ class petLostFoundInfoCreateAPIView(viewsets.ModelViewSet):
 
 
 
-class faqView(viewsets.ModelViewSet):
+class faqViewSet(viewsets.ModelViewSet):
     queryset = faq.objects.all()
     serializer_class = faqSerializer
     # permission_classes = [IsAuthenticated]
