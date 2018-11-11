@@ -105,11 +105,17 @@ class PetsPersonalInfo(models.Model):
     age = models.IntegerField()
     color = models.CharField(max_length=20)
     identification = models.CharField(max_length=100)
+
+
+    def __str__(self):
+        return self.identification
 # 
 class petInfo(models.Model):    
     petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
     petPersonalInfo=models.ForeignKey(PetsPersonalInfo, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.petPersonalInfo.identification
+# 
 
 
 class ownerInfo(models.Model):

@@ -12,15 +12,15 @@ from accounts.api.serializers import UserDetailSerializer
 from app.models import *
 
 
-user=UserDetailSerializer()
+# user=UserDetailSerializer()
 
-class AddressSerializer(HyperlinkedModelSerializer):
+class AddressSerializer(ModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
         model = Address
-        fields = [
-        'id', 'url', 'doorNo', 'street', 'city','emirate','zipCode'
-        ]
+        fields = (
+        'id', 'user','doorNo', 'street', 'city','emirate','zipCode'
+        )
 
 
 # post_detail_url = HyperlinkedIdentityField(
@@ -59,15 +59,15 @@ class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
 class petInfoSerializer(ModelSerializer):
     class Meta:
         model = petInfo
-        fields = ('petId','url', 'petPersonalInfo')
+        fields = ('petId', 'petPersonalInfo')
 
 # 
 class ownerInfoSerializer(ModelSerializer):
-    user=UserDetailSerializer()
+    # user=UserDetailSerializer()
 
     class Meta:
         model = ownerInfo
-        fields = ('oId','url', 'user', 'petInfo')
+        fields = ('oId', 'user', 'petInfo')
 
 
 
@@ -89,8 +89,8 @@ class LocationSerializer(ModelSerializer):
 
 class VetInfoCreateUpdateSerializer(ModelSerializer):
 
-    certification = CertificationSerializer()
-    location = LocationSerializer()
+    # certification = CertificationSerializer()
+    # location = LocationSerializer()
 
 
     class Meta:
@@ -112,7 +112,7 @@ class jobExperienceSerializer(ModelSerializer):
 
 
 class careTakerInfoSerializer(ModelSerializer):
-    user=UserDetailSerializer()
+    # user=UserDetailSerializer()
     class Meta:
         model = careTakerInfo
         fields = ('ctId','url', 'user', 'jobExperience')
