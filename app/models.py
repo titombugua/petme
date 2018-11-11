@@ -271,15 +271,17 @@ class faq(models.Model):
     question = models.CharField(max_length=200)
     answers = models.TextField()
 
-    PQ = 'PQ'
-    GQ = 'GQ'
+    Pet_Me_Question = 'Pet-Me-Question'
+    General_Question = 'General-Question'
     faqCategories = (
-        (PQ, 'Pet-Me-Questions'),
-        (GQ, 'General-Question'),
+        (Pet_Me_Question, 'Pet-Me-Questions'),
+        (General_Question, 'General-Question'),
 
         )
 
     category = models.CharField(max_length=50, choices=faqCategories)
+    def __str__(self):
+        return self.category
 
 
 
