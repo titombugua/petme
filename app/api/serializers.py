@@ -180,7 +180,7 @@ class petServicesSerializer(ModelSerializer):
 class faqSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = faq
-        fields = ('faqId', 'question','answers')
+        fields = ('faqId', 'question','answers', 'category')
 
         
 class petMeServicesSerializer(HyperlinkedModelSerializer):
