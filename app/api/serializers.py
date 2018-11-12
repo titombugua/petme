@@ -19,7 +19,7 @@ class AddressSerializer(ModelSerializer):
     class Meta:
         model = Address
         fields = (
-        'id', 'user','doorNo', 'street', 'city','emirate','zipCode'
+        'url','id', 'user','doorNo', 'street', 'city','emirate','zipCode'
         )
 
 
@@ -34,7 +34,7 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsInfo
         fields = [
-        'petId', 'petName','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
+        'url','petId', 'petName','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
         ]
 
 
@@ -49,7 +49,7 @@ class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsPersonalInfo
         fields = [
-        'petId','age','color','identification'
+        'url','petId','age','color','identification'
         ]
 
 
@@ -59,7 +59,7 @@ class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
 class petInfoSerializer(ModelSerializer):
     class Meta:
         model = petInfo
-        fields = ('petId', 'petPersonalInfo')
+        fields = ('url','petId', 'petPersonalInfo')
 
 # 
 class ownerInfoSerializer(ModelSerializer):
@@ -67,7 +67,7 @@ class ownerInfoSerializer(ModelSerializer):
 
     class Meta:
         model = ownerInfo
-        fields = ('oId', 'user', 'petInfo')
+        fields = ('url','oId', 'user', 'petInfo')
 
 
 
@@ -76,14 +76,14 @@ class CertificationSerializer(ModelSerializer):
     class Meta:
         model = Certification
         fields = [
-        'id','name','startDate','endDate','affiliation'
+       'url', 'id','name','startDate','endDate','affiliation'
         ]
 
 class LocationSerializer(ModelSerializer):
     class Meta:
         model = Location
         fields = [
-        'id','location','phone','workingHours'
+        'url','id','location','phone','workingHours'
         ]
 
 
@@ -95,19 +95,19 @@ class VetInfoCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = VetInfo
-        fields = ('vId','user', 'location', 'certification')
+        fields = ('url','vId','user', 'location', 'certification')
 
 
 
 class jobsListSerializer(ModelSerializer):
     class Meta:
         model = jobsList
-        fields = ('jId','petId', 'jobName', 'jobCategories')
+        fields = ('url','jId','petId', 'jobName', 'jobCategories')
 
 class jobExperienceSerializer(ModelSerializer):
     class Meta:
         model = jobExperience
-        fields = ('jeId','jId','noOfYears')
+        fields = ('url','jeId','jId','noOfYears')
 
 
 
@@ -115,7 +115,7 @@ class careTakerInfoSerializer(ModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
         model = careTakerInfo
-        fields = ('ctId', 'user', 'jobExperience')
+        fields = ('url','ctId', 'user', 'jobExperience')
 
 
 
@@ -123,25 +123,25 @@ class careTakerInfoSerializer(ModelSerializer):
 class petServicesSerializer(ModelSerializer):
     class Meta:
         model = petServices
-        fields = ('psId','petId', 'serviceName', 'seviceCost','serviceDuration')
+        fields = ('url','psId','petId', 'serviceName', 'seviceCost','serviceDuration')
 
 
 # 
 
 
 class rescueOrganizationsSerializer(ModelSerializer ):
-    location = LocationSerializer()
+    # location = LocationSerializer()
 
     class Meta:
         model = rescueOrganizations
-        fields = ('roId','organizationName', 'location', 'webSite', 'facebookLink')
+        fields = ('url','roId','organizationName', 'location', 'webSite', 'facebookLink')
 
 
 
 class petFriendlyVenueSerializer(ModelSerializer):
     class Meta:
         model = petFriendlyVenue
-        fields = ('id', 'place', 'landmark', 'street', 'city', 'emirate', 'zipCode', 'latitude', 'logitude')
+        fields = ('url','id', 'place', 'landmark', 'street', 'city', 'emirate', 'zipCode', 'latitude', 'logitude')
 
 class lostAndFoundSerializer(HyperlinkedModelSerializer):
     class Meta:
