@@ -23,8 +23,8 @@ from .utils import get_read_time
 
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    doorNo = models.CharField(max_length=50 , null=True )
-    street=models.CharField(max_length=50 , null=True)
+    doorNo = models.CharField(max_length=500 , null=True )
+    street=models.CharField(max_length=500 , null=True)
     AUH = 'Abu Dhabi'
     AJM = 'Ajman'
     SHJ = 'Sharjah'
@@ -46,9 +46,9 @@ class Address(models.Model):
         )   
 
 
-    city = models.CharField(max_length=30, choices=cityChoices)
-    emirate=models.CharField(max_length=30, choices=cityChoices)
-    zipCode=models.CharField(max_length=30, null=True)
+    city = models.CharField(max_length=300, choices=cityChoices)
+    emirate=models.CharField(max_length=300, choices=cityChoices)
+    zipCode=models.CharField(max_length=300, null=True)
 
     def __str__(self):
         return self.street
@@ -59,8 +59,8 @@ class Address(models.Model):
 
 class PetsInfo(models.Model):    
     petId = models.AutoField(primary_key=True)
-    petName  = models.CharField(max_length=30)
-    petBreed = models.CharField(max_length=30)
+    petName  = models.CharField(max_length=300)
+    petBreed = models.CharField(max_length=300)
     image = models.ImageField(upload_to="uploads/", null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
@@ -91,7 +91,7 @@ class PetsInfo(models.Model):
         )
     weight = models.CharField(max_length=30, choices=weightChoices)
     
-    favoriteThings = models.CharField(max_length=30)
+    favoriteThings = models.CharField(max_length=300)
     food = models.CharField(max_length=500)
     anythingElse = models.CharField(max_length=500, null=True)
 
@@ -103,8 +103,8 @@ class PetsInfo(models.Model):
 class PetsPersonalInfo(models.Model): 
     petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
     age = models.IntegerField()
-    color = models.CharField(max_length=20)
-    identification = models.CharField(max_length=100)
+    color = models.CharField(max_length=200)
+    identification = models.CharField(max_length=200)
 
 
     def __str__(self):
@@ -140,9 +140,9 @@ class Certification(models.Model):
 
 
 class Location(models.Model):
-    location = models.CharField(max_length=30)
-    phone = models.CharField(max_length=20)
-    workingHours= models.CharField(max_length=50)
+    location = models.CharField(max_length=300)
+    phone = models.CharField(max_length=200)
+    workingHours= models.CharField(max_length=200)
     def __str__(self):
         return self.location
 
@@ -164,8 +164,8 @@ class VetInfo(models.Model):
 class jobsList(models.Model):
     jId = models.AutoField(primary_key=True)
     petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
-    jobName = models.CharField(max_length=30)
-    jobCategories = models.CharField(max_length=30)
+    jobName = models.CharField(max_length=300)
+    jobCategories = models.CharField(max_length=300)
     def __str__(self):
         return self.jobName
 
@@ -191,27 +191,27 @@ class careTakerInfo(models.Model):
 class petServices(models.Model):
     psId = models.AutoField(primary_key=True)
     petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
-    serviceName = models.CharField(max_length=30)
+    serviceName = models.CharField(max_length=200)
     seviceCost = models.IntegerField()
-    serviceDuration = models.CharField(max_length=30)
+    serviceDuration = models.CharField(max_length=200)
 
 
 
 
 class rescueOrganizations(models.Model):
     roId = models.AutoField(primary_key=True)
-    organizationName = models.CharField(max_length=30)
+    organizationName = models.CharField(max_length=100)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
-    webSite = models.CharField(max_length=30)
-    facebookLink = models.CharField(max_length=30)
+    webSite = models.CharField(max_length=300)
+    facebookLink = models.CharField(max_length=300)
     
 
 class petFriendlyVenue(models.Model):
-    place = models.CharField(max_length=30)
-    landmark = models.CharField(max_length=30)
-    street = models.CharField(max_length=30)
-    city = models.CharField(max_length=30)
+    place = models.CharField(max_length=300)
+    landmark = models.CharField(max_length=300)
+    street = models.CharField(max_length=300)
+    city = models.CharField(max_length=200)
     emirate = models.CharField(max_length=30)
     zipCode = models.IntegerField()
     latitude = models.IntegerField()
@@ -221,7 +221,7 @@ class petFriendlyVenue(models.Model):
 class lostAndFound(models.Model):
     lfId = models.AutoField(primary_key=True)
     oId = models.ForeignKey(ownerInfo, on_delete=models.CASCADE)
-    reportingActivity = models.CharField(max_length=30)
+    reportingActivity = models.CharField(max_length=600)
     date = models.DateField()
     emirate = models.CharField(max_length=30)
     petInfo = models.ForeignKey(petInfo, on_delete=models.CASCADE)
@@ -229,7 +229,7 @@ class lostAndFound(models.Model):
 
 
 class petWas(models.Model):
-    specifically = models.CharField(max_length=300)
+    specifically = models.CharField(max_length=600)
     def __str__(self):
         return self.specifically
 
@@ -237,8 +237,8 @@ class petWas(models.Model):
 class petLostFoundInfo(models.Model):
 # typeOfPet = models.ForeignKey(typeOfPet, on_delete=models.CASCADE)
 # typeOfPet = models.ManyToManyField(typeOfPet)
-    typeOfPet = models.CharField(max_length=30)
-    breed = models.CharField(max_length=30)
+    typeOfPet = models.CharField(max_length=600)
+    breed = models.CharField(max_length=600)
 
     MALE = 'M'
     FEMALE = 'F'
@@ -248,8 +248,8 @@ class petLostFoundInfo(models.Model):
 
         )
 
-    gender = models.CharField(max_length=30, choices=genderChoices)
-    color = models.CharField(max_length=30)
+    gender = models.CharField(max_length=600, choices=genderChoices)
+    color = models.CharField(max_length=3600)
     age=models.IntegerField()
     # size=models.ManyToManyField(weight)
     w1 = 'w1'
@@ -273,8 +273,8 @@ class petLostFoundInfo(models.Model):
     image = models.ImageField(upload_to='images/', null=True)  
 
     shelter=models.CharField(max_length=30)
-    additionalInfo=models.CharField(max_length=30, null=True)
-    additionalData=models.CharField(max_length=30, null=True)
+    additionalInfo=models.CharField(max_length=600, null=True)
+    additionalData=models.CharField(max_length=600, null=True)
 
 
 
@@ -286,7 +286,7 @@ class petLostFoundInfo(models.Model):
 
 class faq(models.Model):
     faqId = models.AutoField(primary_key=True)
-    question = models.CharField(max_length=200)
+    question = models.CharField(max_length=600)
     answers = models.TextField()
 
     Pet_Me_Question = 'Pet-Me-Question'
@@ -307,8 +307,8 @@ class faq(models.Model):
 class petMeServices(models.Model):
     sId = models.AutoField(primary_key=True)
     # petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
-    pets = models.CharField(max_length=30)
-    services = models.CharField(max_length=30)
+    pets = models.CharField(max_length=300)
+    services = models.CharField(max_length=300)
     created = models.DateField()
 
 
