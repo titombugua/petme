@@ -58,6 +58,17 @@ class addressView(viewsets.ModelViewSet):
 #     def perform_create(self, serializer):
 #         serializer.save(user=self.request.user)
 
+
+class favoriteThingsView(viewsets.ModelViewSet):
+    queryset = favoriteThings.objects.all()
+    serializer_class = favoriteThingsSerializer
+    # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+
+
+
+
+
 class petCreateAPIView(viewsets.ModelViewSet):
     queryset = PetsInfo.objects.all()
     serializer_class = PetInfoCreateUpdateSerializer

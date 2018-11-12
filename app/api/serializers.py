@@ -27,6 +27,10 @@ class AddressSerializer(ModelSerializer):
 #         view_name='address-api:detail',
 #         # lookup_field='slug'
 #         )
+class favoriteThingsSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = favoriteThings
+        fields = ('url', 'favoriteThings')
 
 
 
@@ -95,7 +99,7 @@ class VetInfoCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = VetInfo
-        fields = ('url','vId','user', 'location', 'certification')
+        fields = ('url','vId','name', 'mobile', 'phone', 'workingHours','latitude','logitude',)
 
 
 

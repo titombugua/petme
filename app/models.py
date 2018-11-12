@@ -57,6 +57,8 @@ class Address(models.Model):
 class favoriteThings(models.Model):
     favoriteThings = models.CharField(max_length=300)
 
+    def __str__(self):
+        return self.favoriteThings
 
 
 
@@ -155,12 +157,19 @@ class Location(models.Model):
 
 class VetInfo(models.Model):
     vId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    certification = models.ForeignKey(Certification, on_delete=models.CASCADE)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    name = models.CharField(max_length=300)
+    mobile =models.CharField(max_length=300)
+    phone = models.CharField(max_length=300)
+    workingHours= models.CharField(max_length=200)
+    latitude = models.FloatField()
+    logitude = models.FloatField()
+    # location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    # certification = models.ForeignKey(Certification, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return self.name
+        # return self.user.username
 
 
 

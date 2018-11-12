@@ -14,6 +14,8 @@ from .views import *
 router = routers.DefaultRouter()
 
 router.register('address', addressView)
+router.register('favorite-thing', favoriteThingsView)
+
 router.register('pets-create', petCreateAPIView)
 router.register('pp-info', PetsPersonalInfoCreateAPIView)
 
