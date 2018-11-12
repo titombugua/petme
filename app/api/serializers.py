@@ -138,7 +138,7 @@ class rescueOrganizationsSerializer(ModelSerializer ):
 
     class Meta:
         model = rescueOrganizations
-        fields = ('url','roId','organizationName', 'location', 'webSite', 'facebookLink')
+        fields = ('url','roId','organizationName','descriptions', 'location', 'webSite', 'facebookLink')
 
 
 
