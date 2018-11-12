@@ -162,7 +162,7 @@ class VetInfo(models.Model):
     mobile =models.CharField(max_length=300)
     phone = models.CharField(max_length=300)
     workingHours= models.CharField(max_length=200)
-    address = model.TextField()
+    address = models.TextField()
     latitude = models.FloatField()
     logitude = models.FloatField()
     # location = models.ForeignKey(Location, on_delete=models.CASCADE)
