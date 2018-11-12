@@ -99,7 +99,7 @@ class VetInfoCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = VetInfo
-        fields = ('url','vId','name', 'mobile', 'phone', 'workingHours','latitude','logitude',)
+        fields = ('url','vId','name', 'mobile', 'address', 'phone', 'workingHours','latitude','logitude',)
 
 
 
