@@ -22,19 +22,23 @@ from django.contrib import admin
 
 from rest_framework_jwt.views import obtain_jwt_token
 
-from accounts.views import (login_view, register_view, logout_view)
+# from accounts.views import (login_view, register_view, logout_view)
+from accounts.api.views import (UserCreateAPIView, UserLoginAPIView, UserListView
+    
+
+    )
 
 urlpatterns = [
     
     url(r'^admin/', admin.site.urls),
     
-    url(r'^register/', register_view, name='register'),
-    url(r'^login/', login_view, name='login'),
-    url(r'^logout/', logout_view, name='logout'),
-    url(r'^', include("app.api.urls", namespace='app')),
+    # url(r'^register/', register_view, name='register'),
+    # url(r'^login/', login_view, name='login'),
+    # url(r'^logout/', logout_view, name='logout'),
+    url(r'^', include("app.api.urls")),
     url(r'^api/auth/token/', obtain_jwt_token),
     url(r'^api/', include('accounts.api.urls')),
-    url(r'^api/', include("app.api.urls", namespace='app-api')),
+    url(r'^api/', include("app.api.urls")),
     #url(r'^posts/$', "<appname>.views.<function_name>"),
 ]
 

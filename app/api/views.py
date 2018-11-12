@@ -12,7 +12,8 @@ from rest_framework.generics import (
     ListAPIView, 
     UpdateAPIView,
     RetrieveAPIView,
-    RetrieveUpdateAPIView
+    RetrieveUpdateAPIView,
+    ListCreateAPIView
     )
 
 
@@ -244,18 +245,21 @@ class faqViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
+
+# class faqAPIListCreateView(ListCreateAPIView):
+#     queryset = faq.objects.all()
+#     serializer_class = faqSerializer
+
     
 
 
 
 
-
-
-class petMeServicesAPIView(viewsets.ModelViewSet):
+class petMeServicesView(viewsets.ModelViewSet):
     queryset = petMeServices.objects.all()
     serializer_class = petMeServicesSerializer
     # permission_classes = [IsAuthenticated]
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
 
 
 

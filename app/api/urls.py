@@ -3,13 +3,15 @@ from django.contrib import admin
 
 from rest_framework import routers
 
+from accounts.api.views import *
+from .views import petMeServicesView
+
 
 from .views import *
 
+
+
 router = routers.DefaultRouter()
-
-
-
 
 router.register('address', addressView)
 router.register('pets-create', petCreateAPIView)
@@ -23,7 +25,7 @@ router.register('job-list', jobListCreateAPIView)
 router.register('job-experience', jobExperienceCreateAPIView)
 router.register('care-taker-info', careTakerInfoAPIView)
 
-
+ 
 
 router.register('pet-services', petServicesCreateAPIView)
 
@@ -49,17 +51,15 @@ router.register('pet-was', petWasCreateAPIView)
 router.register('petlost', petLostFoundInfoCreateAPIView)
 
 
-router.register('faq', faqViewSet)
+router.register(r'faq', faqViewSet)
 
 
-router.register('pet-me-services', petMeServicesAPIView)
+router.register('pet-me-services', petMeServicesView)
 
+urlpatterns = [
+  url('', include(router.urls)), 
 
-
-
-
-
-
+]
 
 
 
@@ -86,11 +86,10 @@ router.register('pet-me-services', petMeServicesAPIView)
 #     PetsPersonalInfoCreateAPIView
 #     )
 
-urlpatterns = [
-    # url(r'^$', PostListAPIView.as_view(), name='list'),
-    url(r'', include(router.urls)),
-    # url(r'^address/$', AddressCreateAPIView .as_view(), name='address-create'),
-    # url(r'^pet/$', petCreateAPIView.as_view(), name='pet-info'),
+# urlpatterns = [
+#     # url(r'^$', PostListAPIView.as_view(), name='list'),
+#     url(r'^', include(router.urls)),    # url(r'^address/$', AddressCreateAPIView .as_view(), name='address-create'),
+#     # url(r'^pet/$', petCreateAPIView.as_view(), name='pet-info'),
 
     # url(r'^pp-info/$', PetsPersonalInfoCreateAPIView.as_view(), name='pet-personal-info'),
     # url(r'^vet/$', VetInfoCreateAPIView.as_view(), name='vets-info'),
@@ -115,6 +114,8 @@ urlpatterns = [
    # url(r'^faq/$', faqCreateAPIView.as_view(), name='petlost'),
 
    # url(r'^pet-me-services/$', petMeServicesAPIView.as_view(), name='pet-services'),
+  # url(r'^api/$', faqAPIListCreateView.as_view()),
+
 
 
 
@@ -122,7 +123,9 @@ urlpatterns = [
 
 
     # url(r'^create/$', PostCreateAPIView.as_view(), name='create'),
-    # url(r'^(?P<slug>[\w-]+)/$', PostDetailAPIView.as_view(), name='detail'),
+  # url(r'^(?P<pk>[\w-]+)/$', faqAPIListCreateView.as_view(), name='detail'),
     # url(r'^(?P<slug>[\w-]+)/edit/$', PostUpdateAPIView.as_view(), name='update'),
     # url(r'^(?P<slug>[\w-]+)/delete/$', PostDeleteAPIView.as_view(), name='delete'),
-]
+
+
+

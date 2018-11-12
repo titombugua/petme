@@ -61,7 +61,7 @@ class PetsInfo(models.Model):
     petId = models.AutoField(primary_key=True)
     petName  = models.CharField(max_length=30)
     petBreed = models.CharField(max_length=30)
-    image = models.ImageField(upload_to="/uploads", null=True)
+    image = models.ImageField(upload_to="uploads/", null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
 
@@ -122,7 +122,8 @@ class ownerInfo(models.Model):
     oId = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     petInfo = models.ForeignKey(petInfo, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.user.username
 
 
 # 
@@ -133,11 +134,18 @@ class Certification(models.Model):
     endDate = models.DateField()
     affiliation=models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.name
+
+
 
 class Location(models.Model):
     location = models.CharField(max_length=30)
     phone = models.CharField(max_length=20)
     workingHours= models.CharField(max_length=50)
+    def __str__(self):
+        return self.location
+
 
 
 
@@ -147,6 +155,10 @@ class VetInfo(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     certification = models.ForeignKey(Certification, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.user.username
+
+
 
 
 class jobsList(models.Model):
@@ -154,12 +166,18 @@ class jobsList(models.Model):
     petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
     jobName = models.CharField(max_length=30)
     jobCategories = models.CharField(max_length=30)
+    def __str__(self):
+        return self.jobName
+
 
 
 class jobExperience(models.Model):
     jeId = models.AutoField(primary_key=True)
     jId = models.ForeignKey(jobsList, on_delete=models.CASCADE)
     noOfYears = models.IntegerField()
+    def __str__(self):
+        return self.jId.jobName
+
 
 class careTakerInfo(models.Model):
     ctId = models.AutoField(primary_key=True)

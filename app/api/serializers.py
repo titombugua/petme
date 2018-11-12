@@ -83,7 +83,7 @@ class LocationSerializer(ModelSerializer):
     class Meta:
         model = Location
         fields = [
-        'id','url','location','phone','workingHours'
+        'id','location','phone','workingHours'
         ]
 
 
@@ -95,19 +95,19 @@ class VetInfoCreateUpdateSerializer(ModelSerializer):
 
     class Meta:
         model = VetInfo
-        fields = ('vId','user','url', 'location', 'certification')
+        fields = ('vId','user', 'location', 'certification')
 
 
 
 class jobsListSerializer(ModelSerializer):
     class Meta:
         model = jobsList
-        fields = ('jId','petId', 'url', 'jobName', 'jobCategories')
+        fields = ('jId','petId', 'jobName', 'jobCategories')
 
 class jobExperienceSerializer(ModelSerializer):
     class Meta:
         model = jobExperience
-        fields = ('jeId','jId','url', 'noOfYears')
+        fields = ('jeId','jId','noOfYears')
 
 
 
@@ -115,7 +115,7 @@ class careTakerInfoSerializer(ModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
         model = careTakerInfo
-        fields = ('ctId','url', 'user', 'jobExperience')
+        fields = ('ctId', 'user', 'jobExperience')
 
 
 
@@ -123,7 +123,7 @@ class careTakerInfoSerializer(ModelSerializer):
 class petServicesSerializer(ModelSerializer):
     class Meta:
         model = petServices
-        fields = ('psId','petId', 'url', 'serviceName', 'seviceCost','serviceDuration')
+        fields = ('psId','petId', 'serviceName', 'seviceCost','serviceDuration')
 
 
 # 
@@ -134,31 +134,31 @@ class rescueOrganizationsSerializer(ModelSerializer ):
 
     class Meta:
         model = rescueOrganizations
-        fields = ('roId','url', 'organizationName', 'location', 'webSite', 'facebookLink')
+        fields = ('roId','organizationName', 'location', 'webSite', 'facebookLink')
 
 
 
 class petFriendlyVenueSerializer(ModelSerializer):
     class Meta:
         model = petFriendlyVenue
-        fields = ('id','url', 'place', 'landmark', 'street', 'city', 'emirate', 'zipCode', 'latitude', 'logitude')
+        fields = ('id', 'place', 'landmark', 'street', 'city', 'emirate', 'zipCode', 'latitude', 'logitude')
 
-class lostAndFoundSerializer(ModelSerializer):
+class lostAndFoundSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = lostAndFound
-        fields = ('lfId','url', 'oId', 'reportingActivity', 'date', 'emirate','petInfo')
+        fields = ('url', 'lfId','oId', 'reportingActivity', 'date', 'emirate','petInfo')
 
 
-class petWasSerializer(ModelSerializer):
+class petWasSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = petWas
-        fields = ('id','specifically')
+        fields = ('url', 'id','specifically')
 
 
-class petLostFoundInfoSerializer(ModelSerializer):
+class petLostFoundInfoSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = petLostFoundInfo
-        fields = ('id', 'typeOfPet', 'breed','gender', 'color', 'age', 'petWas', 'image')
+        fields = ('url', 'typeOfPet', 'breed','gender', 'color', 'age', 'petWas', 'image')
 
 
 
@@ -171,22 +171,25 @@ class petLostFoundInfoSerializer(ModelSerializer):
     #     return Plaf
 
 
-class petServicesSerializer(ModelSerializer):
+class petServicesSerializer(HyperlinkedModelSerializer):
+
     class Meta:
         model = petServices
-        fields = ('psId','petId', 'url', 'serviceName', 'seviceCost','serviceDuration')
+        fields = ('url','psId','petId','serviceName', 'seviceCost','serviceDuration')
 
 
 class faqSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = faq
-        fields = ('faqId', 'question','answers', 'category')
+        fields = ('url', 'faqId', 'question','answers','category')
+       
+     
 
         
 class petMeServicesSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = petMeServices
-        fields = ('sId','pets','services', 'created')
+        fields = ('url', 'sId','pets','services', 'created')
 
 
 
@@ -198,35 +201,3 @@ class petMeServicesSerializer(HyperlinkedModelSerializer):
 
 
 
-
-
-
-
-
-
-
-
-
-""""
-
-from posts.models import Post
-from posts.api.serializers import PostDetailSerializer
-
-
-data = {
-    "title": "Yeahh buddy",
-    "content": "New content",
-    "publish": "2016-2-12",
-    "slug": "yeah-buddy",
-    
-}
-
-obj = Post.objects.get(id=2)
-new_item = PostDetailSerializer(obj, data=data)
-if new_item.is_valid():
-    new_item.save()
-else:
-    print(new_item.errors)
-
-
-"""
