@@ -54,6 +54,10 @@ class Address(models.Model):
         return self.street
 
 
+class favoriteThings(models.Model):
+    favoriteThings = models.CharField(max_length=300)
+
+
 
 
 
@@ -91,9 +95,9 @@ class PetsInfo(models.Model):
         )
     weight = models.CharField(max_length=30, choices=weightChoices)
     
-    favoriteThings = models.CharField(max_length=300)
+    favoriteThings = models.ManyToManyField(favoriteThings)
     food = models.CharField(max_length=500)
-    anythingElse = models.CharField(max_length=500, null=True)
+    anythingElse = models.TextField()
 
     def __str__(self):
         return self.petName
@@ -214,8 +218,8 @@ class petFriendlyVenue(models.Model):
     city = models.CharField(max_length=200)
     emirate = models.CharField(max_length=30)
     zipCode = models.IntegerField()
-    latitude = models.IntegerField()
-    logitude = models.IntegerField()
+    latitude = models.FloatField()
+    logitude = models.FloatField()
 
     
 class lostAndFound(models.Model):

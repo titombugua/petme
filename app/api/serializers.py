@@ -34,7 +34,7 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsInfo
         fields = [
-        'url','petId', 'petName','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
+        'url','petId', 'petName','gender','image', 'birthday', 'weight', 'favoriteThings', 'food', 'anythingElse'
         ]
 
 
