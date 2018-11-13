@@ -28,7 +28,7 @@ class AddressSerializer(HyperlinkedModelSerializer):
 #         view_name='address-api:detail',
 #         # lookup_field='slug'
 #         )
-class favoriteThingsSerializer(ListSerializer):
+class favoriteThingsSerializer(ModelSerializer):
 
     class Meta:
         model = favoriteThings
@@ -37,8 +37,8 @@ class favoriteThingsSerializer(ListSerializer):
 
 
 class PetInfoCreateUpdateSerializer(ModelSerializer):
-    # favorite=favoriteThingsSerializer()
-    favorite = serializers.StringRelatedField(many=True)
+    favorite=favoriteThingsSerializer(many=True)
+    # favorite = serializers.StringRelatedField(many=True)
 
    
     class Meta:
@@ -46,6 +46,16 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
         fields = [
         'url','petId', 'petName','gender','image', 'birthday', 'weight', 'favorite', 'food', 'anythingElse'
         ]
+
+    def create(self, validated_data):
+        favorite_data = validated_data.pop('favorite')
+        petsinfo = PetsInfo.objects.create(**validated_data)
+        for favorite_data in favorite_data:
+            favoriteThings.objects.create(petsinfo=petsinfo, **favorite_data)
+        return petsinfo
+
+
+
 
 
 # post_detail_url = HyperlinkedIdentityField(
@@ -55,7 +65,7 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
 
 
 
-class PetPersonalInfoCreateUpdateSerializer(HyperlinkedModelSerializer):
+class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
     class Meta:
         model = PetsPersonalInfo
         fields = [

@@ -67,7 +67,7 @@ class PetsInfo(models.Model):
     petId = models.AutoField(primary_key=True)
     petName  = models.CharField(max_length=300)
     petBreed = models.CharField(max_length=300)
-    image = models.ImageField(upload_to="uploads/", null=True)
+    image = models.CharField(max_length=25000, null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
 
@@ -102,8 +102,8 @@ class PetsInfo(models.Model):
     anythingElse = models.TextField()
 
     def __str__(self):
-        # return self.petName 
-        return '%s %s' % (self.petName, self.favorite)
+        return self.petName 
+        # return '%s %s' % (self.petName, self.favorite)
 
 
 
