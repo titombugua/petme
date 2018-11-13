@@ -97,7 +97,7 @@ class PetsInfo(models.Model):
         )
     weight = models.CharField(max_length=30, choices=weightChoices)
     
-    favoriteThings = models.ManyToManyField(favoriteThings)
+    favorite = models.ManyToManyField(favoriteThings)
     food = models.CharField(max_length=500)
     anythingElse = models.TextField()
 
