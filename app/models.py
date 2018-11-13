@@ -103,7 +103,7 @@ class PetsInfo(models.Model):
 
     def __str__(self):
         # return self.petName 
-        return '%s %s' % (self.petName, self.favorite.favoriteThings)
+        return '%s %s' % (self.petName, self.favorite)
 
 
 
