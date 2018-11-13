@@ -216,7 +216,7 @@ class petServices(models.Model):
 class rescueOrganizations(models.Model):
     roId = models.AutoField(primary_key=True)
     organizationName = models.CharField(max_length=100)
-    descriptions = models.TextField()
+    description = models.TextField()
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
 
     webSite = models.CharField(max_length=300)
@@ -313,7 +313,7 @@ class faq(models.Model):
 
         )
 
-    category = models.CharField(max_length=50, choices=faqCategories)
+    faqCategory = models.CharField(max_length=50, choices=faqCategories)
     def __str__(self):
         return self.category
 

@@ -138,7 +138,7 @@ class rescueOrganizationsSerializer(ModelSerializer ):
 
     class Meta:
         model = rescueOrganizations
-        fields = ('url','roId','organizationName','descriptions', 'location', 'webSite', 'facebookLink')
+        fields = ('url','roId','organizationName','description', 'location', 'webSite', 'facebookLink')
 
 
 
@@ -185,7 +185,7 @@ class petServicesSerializer(HyperlinkedModelSerializer):
 class faqSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = faq
-        fields = ('url', 'faqId', 'question','answers','category')
+        fields = ('url', 'faqId', 'question','answers','faqCategory')
        
      
 
