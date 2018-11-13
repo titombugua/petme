@@ -102,8 +102,8 @@ class PetsInfo(models.Model):
     anythingElse = models.TextField()
 
     def __str__(self):
-        # return self.petName 
-        return '%s %s' % (self.petName, self.favorite)
+        return self.petName 
+        # return '%s %s' % (self.petName, self.favorite)
 
 
 
