@@ -3,6 +3,7 @@ from rest_framework.serializers import (
     HyperlinkedIdentityField,
     HyperlinkedModelSerializer,
     ModelSerializer,
+    ListSerializer,
     SerializerMethodField
     )
 
@@ -14,7 +15,7 @@ from app.models import *
 
 # user=UserDetailSerializer()
 
-class AddressSerializer(ModelSerializer):
+class AddressSerializer(HyperlinkedModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
         model = Address
@@ -27,7 +28,8 @@ class AddressSerializer(ModelSerializer):
 #         view_name='address-api:detail',
 #         # lookup_field='slug'
 #         )
-class favoriteThingsSerializer(HyperlinkedModelSerializer):
+class favoriteThingsSerializer(ListSerializer):
+
     class Meta:
         model = favoriteThings
         fields = ('url', 'favoriteThings')
@@ -35,6 +37,10 @@ class favoriteThingsSerializer(HyperlinkedModelSerializer):
 
 
 class PetInfoCreateUpdateSerializer(ModelSerializer):
+    # favorite=favoriteThingsSerializer()
+    favorite = serializers.StringRelatedField(many=True)
+
+   
     class Meta:
         model = PetsInfo
         fields = [
@@ -49,7 +55,7 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
 
 
 
-class PetPersonalInfoCreateUpdateSerializer(ModelSerializer):
+class PetPersonalInfoCreateUpdateSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = PetsPersonalInfo
         fields = [
