@@ -58,7 +58,7 @@ class favoriteThings(models.Model):
     favoriteThings = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.id
+        return self.favoriteThings
 
 
 
@@ -102,8 +102,8 @@ class PetsInfo(models.Model):
     anythingElse = models.TextField()
 
     def __str__(self):
-        return self.petName 
-        # return '%s %s' % (self.petName, self.favorite)
+        # return self.petName 
+        return '%s %s' % (self.petName, self.favorite)
 
 
 
