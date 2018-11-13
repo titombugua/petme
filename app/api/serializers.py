@@ -49,10 +49,10 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
 
     def create(self, validated_data):
         favorite_data = validated_data.pop('favorite')
-        petsinfo = PetsInfo.objects.create(**validated_data)
+        pt = PetsInfo.objects.create(**validated_data)
         for favorite_data in favorite_data:
-            favoriteThings.objects.create(petsinfo=petsinfo, **favorite_data)
-        return petsinfo
+            favoriteThings.objects.create(pt=pt, **favorite_data)
+        return pt
 
 
 
