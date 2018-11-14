@@ -147,11 +147,12 @@ class Certification(models.Model):
 
 
 class Location(models.Model):
+    image = models.ImageField(upload_to='upload_location/')
     location = models.CharField(max_length=300)
     phone = models.CharField(max_length=200)
     workingHours= models.CharField(max_length=200)
     def __str__(self):
-        return self.location
+        return self.image
 
 
 
