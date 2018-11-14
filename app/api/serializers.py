@@ -125,7 +125,7 @@ class LocationSerializer(ModelSerializer):
     class Meta:
         model = Location
         fields = [
-        'url','id',"image", 'location','phone','workingHours'
+        'url','id','location','phone','workingHours'
         ]
 
 

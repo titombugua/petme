@@ -171,7 +171,7 @@ class Location(models.Model):
     phone = models.CharField(max_length=200)
     workingHours= models.CharField(max_length=200)
     def __str__(self):
-        return self.image
+        return self.location
 
 
 
