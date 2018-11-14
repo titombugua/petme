@@ -101,6 +101,13 @@ class petInfoCreateAPIView(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
+class petView(viewsets.ModelViewSet):
+    queryset = pet.objects.all()
+    serializer_class = petSerializer
+    # permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
+
+
 
     # def perform_create(self, serializer):
     #     serializer.save(user=self.request.user)

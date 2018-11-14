@@ -84,12 +84,24 @@ class petInfoSerializer(ModelSerializer):
         fields = ('url','petId', 'petPersonalInfo')
 
 # 
+
+class petSerializer(ModelSerializer):
+
+    class Meta:
+        model = pet
+        fields = ('url', 'name')
+
+
+
+
 class ownerInfoSerializer(ModelSerializer):
-    # user=UserDetailSerializer()
+    # user=UserDetailSerializer(many=True)
 
     class Meta:
         model = ownerInfo
-        fields = ('url','oId', 'user', 'petInfo')
+        fields = ('url','oId', 'user', 'pet')
+
+
 
 
 

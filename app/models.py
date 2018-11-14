@@ -67,7 +67,7 @@ class PetsInfo(models.Model):
     petId = models.AutoField(primary_key=True)
     petName  = models.CharField(max_length=300)
     petBreed = models.CharField(max_length=300)
-    # image = models.ImageField(upload_to='upload_location/')
+    # image = models.ImageField(upload_to='upload_location/') 
 
     image = models.CharField(max_length=25000, null=True)
 
@@ -125,12 +125,16 @@ class petInfo(models.Model):
     def __str__(self):
         return self.petPersonalInfo.identification
 # 
-
+class pet(models.Model):    
+    # petId = models.ForeignKey(PetsInfo, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
 
 class ownerInfo(models.Model):
     oId = models.AutoField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    petInfo = models.ForeignKey(petInfo, on_delete=models.CASCADE)
+    pet = models.ForeignKey(pet, on_delete=models.CASCADE)
     def __str__(self):
         return self.user.username
 
