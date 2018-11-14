@@ -20,7 +20,7 @@ from app.models import *
 
 
 
-
+    
 
 class AddressSerializer(HyperlinkedModelSerializer):
     # user=UserDetailSerializer()
