@@ -301,8 +301,8 @@ class petLostFoundInfo(models.Model):
 
         )
 
-    gender = models.CharField(max_length=600, choices=genderChoices)
-    color = models.CharField(max_length=3600)
+    gender = models.CharField(max_length=5600, choices=genderChoices)
+    color = models.CharField(max_length=50)
     age=models.IntegerField()
     # size=models.ManyToManyField(weight)
     w1 = 'w1'
