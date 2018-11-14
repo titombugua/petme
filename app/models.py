@@ -69,7 +69,7 @@ class PetsInfo(models.Model):
     petBreed = models.CharField(max_length=300)
     # image = models.ImageField(upload_to='upload_location/') 
 
-    image = models.CharField(max_length=25000, null=True)
+    image = models.CharField(max_length=600, null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
 
