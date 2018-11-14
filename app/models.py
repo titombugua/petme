@@ -133,10 +133,24 @@ class pet(models.Model):
 
 class ownerInfo(models.Model):
     oId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    pet = models.ForeignKey(pet, on_delete=models.CASCADE)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    first_name =models.CharField(max_length=300)
+    last_name = models.CharField(max_length=300)
+    # GENDER CHOICES
+    MALE = 'M'
+    FEMALE = 'F'
+    genderChoices = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+
+        )
+    gender = models.CharField(max_length=300, choices=genderChoices)
+    street_address =models.CharField(max_length=300)
+    city= models.CharField(max_length=600)
+    pet = models.CharField(max_length=600)
+
     def __str__(self):
-        return self.user.username
+        return self.first_name
 
 
 # 
@@ -203,11 +217,28 @@ class jobExperience(models.Model):
 
 class careTakerInfo(models.Model):
     ctId = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-    jobExperience = models.ForeignKey(jobExperience, on_delete=models.CASCADE)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
+    first_name =models.CharField(max_length=300)
+    last_name = models.CharField(max_length=300)
+    # GENDER CHOICES
+    MALE = 'M'
+    FEMALE = 'F'
+    genderChoices = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
 
+        )
+    gender = models.CharField(max_length=300, choices=genderChoices)
+    street_address = models.CharField(max_length=300)
+    city = models.CharField(max_length=600)
+    pet = models.CharField(max_length=600)
     def __str__(self):
-        return self.user_name
+        return self.first_name
+
+    # jobExperience = models.ForeignKey(jobExperience, on_delete=models.CASCADE)
+
+    # def __str__(self):
+    #     return self.user_name
 
 
 class petServices(models.Model):

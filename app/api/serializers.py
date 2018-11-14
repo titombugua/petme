@@ -15,6 +15,13 @@ from app.models import *
 
 # user=UserDetailSerializer()
 
+
+
+
+
+
+
+
 class AddressSerializer(HyperlinkedModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
@@ -95,11 +102,12 @@ class petSerializer(ModelSerializer):
 
 
 class ownerInfoSerializer(ModelSerializer):
-    # user=UserDetailSerializer(many=True)
+    # user=UserDetailSerializer()
+    
 
     class Meta:
         model = ownerInfo
-        fields = ('url','oId', 'user', 'pet')
+        fields = ('url', 'first_name','last_name', 'gender', 'street_address', 'city', 'pet')
 
 
 
@@ -149,7 +157,7 @@ class careTakerInfoSerializer(ModelSerializer):
     # user=UserDetailSerializer()
     class Meta:
         model = careTakerInfo
-        fields = ('url','ctId', 'user', 'jobExperience')
+        fields = ('url', 'first_name','last_name', 'gender', 'street_address', 'city', 'pet')
 
 
 

@@ -26,10 +26,8 @@ router.register('certification', CertificationCreateAPIView)
 router.register('job-list', jobListCreateAPIView)
 router.register('job-experience', jobExperienceCreateAPIView)
 router.register('pet', petView)
-
 router.register('care-taker-info', careTakerInfoAPIView)
 
- 
 
 router.register('pet-services', petServicesCreateAPIView)
 
