@@ -13,7 +13,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 
-router.register('address', addressView)
+# router.register('address', addressView)
 router.register('favorite-thing', favoriteThingsView)
 
 router.register('pets-create', petCreateAPIView)
