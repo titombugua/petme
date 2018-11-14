@@ -37,8 +37,10 @@ class favoriteThingsSerializer(ModelSerializer):
 
 
 class PetInfoCreateUpdateSerializer(ModelSerializer):
-    favorite=favoriteThingsSerializer(many=True)
+    # favorite=favoriteThingsSerializer(many=True)  
+
     # favorite = serializers.StringRelatedField(many=True)
+    favorite = serializers.JSONField()
 
    
     class Meta:
@@ -47,12 +49,12 @@ class PetInfoCreateUpdateSerializer(ModelSerializer):
         'url','petId', 'petName','gender','image', 'birthday', 'weight', 'favorite', 'food', 'anythingElse'
         ]
 
-    def create(self, validated_data):
-        favorite_data = validated_data.pop('favorite')
-        petsinfo = PetsInfo.objects.create(**validated_data)
-        for favorite_data in favorite_data:
-            favoriteThings.objects.create(petsinfo=petsinfo, **favorite_data)
-        return petsinfo
+    # def create(self, validated_data):
+    #     favorite_data = validated_data.pop('favorite')
+    #     petsinfo = PetsInfo.objects.create(**validated_data)
+    #     for favorite_data in favorite_data:
+    #         favoriteThings.objects.create(petsinfo=petsinfo, **favorite_data)
+    #     return petsinfo
 
 
 

@@ -8,7 +8,7 @@ from django.db.models.signals import pre_save
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-
+from django.contrib.postgres.fields import JSONField
 
 from markdown_deux import markdown
 
@@ -67,6 +67,8 @@ class PetsInfo(models.Model):
     petId = models.AutoField(primary_key=True)
     petName  = models.CharField(max_length=300)
     petBreed = models.CharField(max_length=300)
+    # image = models.ImageField(upload_to='upload_location/')
+
     image = models.CharField(max_length=25000, null=True)
 
     # files = models.ForeignKey(files, on_delete=models.CASCADE)
@@ -97,7 +99,7 @@ class PetsInfo(models.Model):
         )
     weight = models.CharField(max_length=30, choices=weightChoices)
     
-    favorite = models.ManyToManyField(favoriteThings)
+    favorite =  JSONField()
     food = models.CharField(max_length=500)
     anythingElse = models.TextField()
 
