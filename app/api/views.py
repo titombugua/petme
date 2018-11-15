@@ -1,5 +1,7 @@
 from django.db.models import Q
 from rest_framework import viewsets
+from django.contrib.auth.models import User
+
 
 
 from rest_framework.filters import (
@@ -112,7 +114,7 @@ class petView(viewsets.ModelViewSet):
     # def perform_create(self, serializer):
     #     serializer.save(user=self.request.user)
 
-class ownerInfoCreateAPIView(viewsets.ModelViewSet):
+class ownerInfoViewSet(viewsets.ModelViewSet):
     queryset = ownerInfo.objects.all()
     serializer_class = ownerInfoSerializer
     # permission_classes = [IsAuthenticated]

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from rest_framework.serializers import (
     HyperlinkedIdentityField,
     HyperlinkedModelSerializer,
@@ -101,13 +102,13 @@ class petSerializer(ModelSerializer):
 
 
 
-class ownerInfoSerializer(ModelSerializer):
-    # user=UserDetailSerializer()
+class ownerInfoSerializer(serializers.ModelSerializer):
     
+        class Meta:
+            model = ownerInfo
+            #fields = ('url', "username", 'first_name','nationality',)
+            fields = ('url', 'first_name','last_name', 'gender', 'street_address', 'city', 'pet')
 
-    class Meta:
-        model = ownerInfo
-        fields = ('url', 'first_name','last_name', 'gender', 'street_address', 'city', 'pet')
 
 
 

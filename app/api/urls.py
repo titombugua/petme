@@ -35,7 +35,7 @@ router.register('pet-services', petServicesCreateAPIView)
 router.register('pet-info', petInfoCreateAPIView)
 
 
-router.register('owner-info', ownerInfoCreateAPIView)
+router.register('owner-info', ownerInfoViewSet)
 
 
 router.register('rescue-info', rescueOrganizationsCreateAPIView)
